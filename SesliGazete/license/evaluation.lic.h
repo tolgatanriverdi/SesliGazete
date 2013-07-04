@@ -1,0 +1,1 @@
+const char babLicense[]="\"5526 0 NSCA #EVALUATION#NSCAPI Acapela-group\"\nV26UONwcfvic6afGbd7I4HNp@%c6$2izATv3eewbWWeizdgNUtTmJra!PWN@\nY2JQ!X5RzKm$jkMBJKEZnHo3NvvRSYtDbaaGtQ##\nXGHCxjY%ZnKXmxxXeViL\n";

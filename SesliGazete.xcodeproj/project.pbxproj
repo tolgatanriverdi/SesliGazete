@@ -19,6 +19,14 @@
 		DA283E6F1781CC2A00AAF84E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA283E6E1781CC2A00AAF84E /* ViewController.m */; };
 		DA283E721781CC2A00AAF84E /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA283E701781CC2A00AAF84E /* ViewController_iPhone.xib */; };
 		DA283E751781CC2A00AAF84E /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA283E731781CC2A00AAF84E /* ViewController_iPad.xib */; };
+		DA283E7C1781D8B100AAF84E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283E7B1781D8B100AAF84E /* AudioToolbox.framework */; };
+		DA283EA31781DC7200AAF84E /* libBabTTS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283EA11781DC7200AAF84E /* libBabTTS.a */; };
+		DA283EA41781DC7200AAF84E /* libMobilityStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283EA21781DC7200AAF84E /* libMobilityStatic.a */; };
+		DA283EBA1781E45700AAF84E /* license in Resources */ = {isa = PBXBuildFile; fileRef = DA283EB91781E45700AAF84E /* license */; };
+		DA283EBC1781E72800AAF84E /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283EBB1781E72800AAF84E /* libstdc++.dylib */; };
+		DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2427178469B7006171E4 /* AcapelaSetup.m */; };
+		DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2429178469B8006171E4 /* force_cpp.cpp */; };
+		DA7C24511784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz in Resources */ = {isa = PBXBuildFile; fileRef = DA7C24501784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +47,18 @@
 		DA283E6E1781CC2A00AAF84E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DA283E711781CC2A00AAF84E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		DA283E741781CC2A00AAF84E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		DA283E7B1781D8B100AAF84E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		DA283EA11781DC7200AAF84E /* libBabTTS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBabTTS.a; sourceTree = "<group>"; };
+		DA283EA21781DC7200AAF84E /* libMobilityStatic.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobilityStatic.a; sourceTree = "<group>"; };
+		DA283EB91781E45700AAF84E /* license */ = {isa = PBXFileReference; lastKnownFileType = folder; path = license; sourceTree = "<group>"; };
+		DA283EBB1781E72800AAF84E /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		DA7C2425178469B7006171E4 /* AcapelaLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcapelaLicense.h; sourceTree = "<group>"; };
+		DA7C2426178469B7006171E4 /* AcapelaSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcapelaSetup.h; sourceTree = "<group>"; };
+		DA7C2427178469B7006171E4 /* AcapelaSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcapelaSetup.m; sourceTree = "<group>"; };
+		DA7C2428178469B8006171E4 /* AcapelaSpeech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcapelaSpeech.h; sourceTree = "<group>"; };
+		DA7C2429178469B8006171E4 /* force_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = force_cpp.cpp; sourceTree = "<group>"; };
+		DA7C242A178469B8006171E4 /* force_cpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = force_cpp.h; sourceTree = "<group>"; };
+		DA7C24501784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "hqm-ref-USEnglish-Heather-22khz"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,9 +66,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA283EBC1781E72800AAF84E /* libstdc++.dylib in Frameworks */,
+				DA283E7C1781D8B100AAF84E /* AudioToolbox.framework in Frameworks */,
 				DA283E561781CC2A00AAF84E /* UIKit.framework in Frameworks */,
 				DA283E581781CC2A00AAF84E /* Foundation.framework in Frameworks */,
 				DA283E5A1781CC2A00AAF84E /* CoreGraphics.framework in Frameworks */,
+				DA283EA31781DC7200AAF84E /* libBabTTS.a in Frameworks */,
+				DA283EA41781DC7200AAF84E /* libMobilityStatic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +82,10 @@
 		DA283E491781CC2A00AAF84E = {
 			isa = PBXGroup;
 			children = (
+				DA283EBB1781E72800AAF84E /* libstdc++.dylib */,
+				DA283EA11781DC7200AAF84E /* libBabTTS.a */,
+				DA283EA21781DC7200AAF84E /* libMobilityStatic.a */,
+				DA283E7B1781D8B100AAF84E /* AudioToolbox.framework */,
 				DA283E5B1781CC2A00AAF84E /* SesliGazete */,
 				DA283E541781CC2A00AAF84E /* Frameworks */,
 				DA283E531781CC2A00AAF84E /* Products */,
@@ -85,6 +113,8 @@
 		DA283E5B1781CC2A00AAF84E /* SesliGazete */ = {
 			isa = PBXGroup;
 			children = (
+				DA7C242D17847245006171E4 /* resources */,
+				DA283EA51781DC8000AAF84E /* acapela */,
 				DA283E641781CC2A00AAF84E /* AppDelegate.h */,
 				DA283E651781CC2A00AAF84E /* AppDelegate.m */,
 				DA283E6D1781CC2A00AAF84E /* ViewController.h */,
@@ -108,6 +138,36 @@
 				DA283E6B1781CC2A00AAF84E /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DA283EA51781DC8000AAF84E /* acapela */ = {
+			isa = PBXGroup;
+			children = (
+				DA7C2424178469B7006171E4 /* api */,
+				DA283EB91781E45700AAF84E /* license */,
+			);
+			name = acapela;
+			sourceTree = "<group>";
+		};
+		DA7C2424178469B7006171E4 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				DA7C2425178469B7006171E4 /* AcapelaLicense.h */,
+				DA7C2426178469B7006171E4 /* AcapelaSetup.h */,
+				DA7C2427178469B7006171E4 /* AcapelaSetup.m */,
+				DA7C2428178469B8006171E4 /* AcapelaSpeech.h */,
+				DA7C2429178469B8006171E4 /* force_cpp.cpp */,
+				DA7C242A178469B8006171E4 /* force_cpp.h */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		DA7C242D17847245006171E4 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA7C24501784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz */,
+			);
+			name = resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +227,8 @@
 				DA283E6C1781CC2A00AAF84E /* Default-568h@2x.png in Resources */,
 				DA283E721781CC2A00AAF84E /* ViewController_iPhone.xib in Resources */,
 				DA283E751781CC2A00AAF84E /* ViewController_iPad.xib in Resources */,
+				DA283EBA1781E45700AAF84E /* license in Resources */,
+				DA7C24511784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +242,8 @@
 				DA283E621781CC2A00AAF84E /* main.m in Sources */,
 				DA283E661781CC2A00AAF84E /* AppDelegate.m in Sources */,
 				DA283E6F1781CC2A00AAF84E /* ViewController.m in Sources */,
+				DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */,
+				DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +341,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SesliGazete/SesliGazete-Prefix.pch";
 				INFOPLIST_FILE = "SesliGazete/SesliGazete-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -288,6 +356,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SesliGazete/SesliGazete-Prefix.pch";
 				INFOPLIST_FILE = "SesliGazete/SesliGazete-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -312,6 +384,7 @@
 				DA283E7A1781CC2A00AAF84E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
