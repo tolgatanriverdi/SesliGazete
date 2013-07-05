@@ -27,6 +27,9 @@
 		DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2427178469B7006171E4 /* AcapelaSetup.m */; };
 		DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2429178469B8006171E4 /* force_cpp.cpp */; };
 		DA7C24511784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz in Resources */ = {isa = PBXBuildFile; fileRef = DA7C24501784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz */; };
+		DABBAC881785A120005E3102 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC871785A120005E3102 /* AVFoundation.framework */; };
+		DABBAC891785A266005E3102 /* wav_to_flac.c in Sources */ = {isa = PBXBuildFile; fileRef = DABBAC8517859F31005E3102 /* wav_to_flac.c */; };
+		DABBACA01785AC0F005E3102 /* libFLACiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC9F1785AC0F005E3102 /* libFLACiOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,19 @@
 		DA7C2429178469B8006171E4 /* force_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = force_cpp.cpp; sourceTree = "<group>"; };
 		DA7C242A178469B8006171E4 /* force_cpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = force_cpp.h; sourceTree = "<group>"; };
 		DA7C24501784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "hqm-ref-USEnglish-Heather-22khz"; sourceTree = "<group>"; };
+		DABBAC8517859F31005E3102 /* wav_to_flac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = wav_to_flac.c; sourceTree = "<group>"; };
+		DABBAC8617859F31005E3102 /* wav_to_flac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wav_to_flac.h; sourceTree = "<group>"; };
+		DABBAC871785A120005E3102 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DABBAC9F1785AC0F005E3102 /* libFLACiOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFLACiOS.a; sourceTree = "<group>"; };
+		DABBACA21785AC1B005E3102 /* all.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = all.h; sourceTree = "<group>"; };
+		DABBACA31785AC1B005E3102 /* assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = assert.h; sourceTree = "<group>"; };
+		DABBACA41785AC1B005E3102 /* callback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = callback.h; sourceTree = "<group>"; };
+		DABBACA51785AC1B005E3102 /* export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = export.h; sourceTree = "<group>"; };
+		DABBACA61785AC1B005E3102 /* format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = format.h; sourceTree = "<group>"; };
+		DABBACA71785AC1B005E3102 /* metadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metadata.h; sourceTree = "<group>"; };
+		DABBACA81785AC1B005E3102 /* ordinals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ordinals.h; sourceTree = "<group>"; };
+		DABBACA91785AC1B005E3102 /* stream_decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stream_decoder.h; sourceTree = "<group>"; };
+		DABBACAA1785AC1B005E3102 /* stream_encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stream_encoder.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DABBAC881785A120005E3102 /* AVFoundation.framework in Frameworks */,
 				DA283EBC1781E72800AAF84E /* libstdc++.dylib in Frameworks */,
 				DA283E7C1781D8B100AAF84E /* AudioToolbox.framework in Frameworks */,
 				DA283E561781CC2A00AAF84E /* UIKit.framework in Frameworks */,
@@ -73,6 +90,7 @@
 				DA283E5A1781CC2A00AAF84E /* CoreGraphics.framework in Frameworks */,
 				DA283EA31781DC7200AAF84E /* libBabTTS.a in Frameworks */,
 				DA283EA41781DC7200AAF84E /* libMobilityStatic.a in Frameworks */,
+				DABBACA01785AC0F005E3102 /* libFLACiOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +100,9 @@
 		DA283E491781CC2A00AAF84E = {
 			isa = PBXGroup;
 			children = (
+				DABBACA11785AC1B005E3102 /* Flac-Headers */,
+				DABBAC9F1785AC0F005E3102 /* libFLACiOS.a */,
+				DABBAC871785A120005E3102 /* AVFoundation.framework */,
 				DA283EBB1781E72800AAF84E /* libstdc++.dylib */,
 				DA283EA11781DC7200AAF84E /* libBabTTS.a */,
 				DA283EA21781DC7200AAF84E /* libMobilityStatic.a */,
@@ -113,6 +134,7 @@
 		DA283E5B1781CC2A00AAF84E /* SesliGazete */ = {
 			isa = PBXGroup;
 			children = (
+				DABBAC8417859F24005E3102 /* wav_to_flac */,
 				DA7C242D17847245006171E4 /* resources */,
 				DA283EA51781DC8000AAF84E /* acapela */,
 				DA283E641781CC2A00AAF84E /* AppDelegate.h */,
@@ -168,6 +190,31 @@
 				DA7C24501784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz */,
 			);
 			name = resources;
+			sourceTree = "<group>";
+		};
+		DABBAC8417859F24005E3102 /* wav_to_flac */ = {
+			isa = PBXGroup;
+			children = (
+				DABBAC8517859F31005E3102 /* wav_to_flac.c */,
+				DABBAC8617859F31005E3102 /* wav_to_flac.h */,
+			);
+			name = wav_to_flac;
+			sourceTree = "<group>";
+		};
+		DABBACA11785AC1B005E3102 /* Flac-Headers */ = {
+			isa = PBXGroup;
+			children = (
+				DABBACA21785AC1B005E3102 /* all.h */,
+				DABBACA31785AC1B005E3102 /* assert.h */,
+				DABBACA41785AC1B005E3102 /* callback.h */,
+				DABBACA51785AC1B005E3102 /* export.h */,
+				DABBACA61785AC1B005E3102 /* format.h */,
+				DABBACA71785AC1B005E3102 /* metadata.h */,
+				DABBACA81785AC1B005E3102 /* ordinals.h */,
+				DABBACA91785AC1B005E3102 /* stream_decoder.h */,
+				DABBACAA1785AC1B005E3102 /* stream_encoder.h */,
+			);
+			path = "Flac-Headers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +291,7 @@
 				DA283E6F1781CC2A00AAF84E /* ViewController.m in Sources */,
 				DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */,
 				DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */,
+				DABBAC891785A266005E3102 /* wav_to_flac.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +386,10 @@
 		DA283E791781CC2A00AAF84E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SesliGazete/SesliGazete-Prefix.pch";
 				INFOPLIST_FILE = "SesliGazete/SesliGazete-Info.plist";
@@ -353,6 +405,10 @@
 		DA283E7A1781CC2A00AAF84E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SesliGazete/SesliGazete-Prefix.pch";
 				INFOPLIST_FILE = "SesliGazete/SesliGazete-Info.plist";
