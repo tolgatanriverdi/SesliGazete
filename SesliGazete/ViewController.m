@@ -16,9 +16,19 @@
 
 #include <AVFoundation/AVFoundation.h>
 #include "wav_to_flac.h"
+#include "MBProgressHUD.h"
 
 
-@interface ViewController ()<NSURLConnectionDelegate>
+#define GUNCEL_HABER_PAGE @"http://sozcu.com.tr/2013/gunun-icinden/kizilagactan-takvime-yalanlama.html"
+#define EKONOMI_HABER_PAGE @"http://sozcu.com.tr/2013/ekonomi/borsa-istanbula-dev-ortak.html"
+#define SPOR_HABER_PAGE @"http://sozcu.com.tr/2013/spor/f-bahceli-yildiz-besiktasta.html"
+
+#define GUNCEL_SES_FILE @"guncel.txt"
+#define SPOR_SES_FILE @"spor.txt"
+#define EKONOMI_SES_FILE @"ekonomi.txt"
+
+
+@interface ViewController ()<NSURLConnectionDelegate,UIWebViewDelegate>
 @property (nonatomic,strong) AcapelaLicense *MyAcaLicense;
 @property (nonatomic,strong) AcapelaSpeech *MyAcaTTS;
 @property (nonatomic,strong) AcapelaSetup  *SetupData;
@@ -27,6 +37,8 @@
 @property (nonatomic,strong) NSString *pathToSave;
 @property (nonatomic,strong) NSString *outputPath;
 @property (nonatomic) int networkStatus;
+@property (nonatomic,strong) NSString *pageToRead;
+@property (nonatomic,strong) MBProgressHUD *hud;
 @end
 
 @implementation ViewController
@@ -39,18 +51,17 @@
 @synthesize pathToSave;
 @synthesize outputPath;
 @synthesize networkStatus;
+@synthesize pageToRead;
+@synthesize hud;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    
-    NSURL *pdfURL = [NSURL URLWithString:@"http://meeappsmobile.com/sesligazete/tts.pdf"];
-    NSURLRequest *pdfRequest = [NSURLRequest requestWithURL:pdfURL];
-    [pdfViewer loadRequest:pdfRequest];
-    
-    
+    [self loadWebRequest:GUNCEL_HABER_PAGE];
+    self.pageToRead = GUNCEL_SES_FILE;
+    pdfViewer.delegate = self;
     
     //TTS INITIALIZE
 	
@@ -101,19 +112,32 @@
 
 - (IBAction)readPressed:(id)sender
 {
-    networkStatus = 0;
-    NSURL *txtURL = [NSURL URLWithString:@"http://meeappsmobile.com/sesligazete/tts.txt"];
-    NSURLRequest *txtRequest = [NSURLRequest requestWithURL:txtURL];
-
-    
-    NSURLConnection *txtConnection = [[NSURLConnection alloc] initWithRequest:txtRequest delegate:self];
-    [txtConnection start];
+    [self readWebRequest:self.pageToRead];
 }
 
 - (IBAction)listenPressed:(id)sender
 {
     [recorder record];
     self.recordTimer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(stopRecording) userInfo:nil repeats:NO];
+}
+
+-(void) showHUD:(NSString*)hudText
+{
+    if (!hud) {
+        hud = [[MBProgressHUD alloc] initWithView:self.view];
+        hud.dimBackground = YES;
+    }
+    hud.labelText = hudText;
+    [hud show:YES];
+    [self.view addSubview:hud];
+}
+
+-(void) hideHUD
+{
+    if (hud) {
+        [hud show:NO];
+        [hud removeFromSuperview];
+    }
 }
 
 -(void) stopRecording
@@ -134,9 +158,11 @@
 
 -(void) deleteExistingFiles
 {
+    /*
     if ([[NSFileManager defaultManager] fileExistsAtPath:pathToSave]) {
         [[NSFileManager defaultManager] removeItemAtPath:pathToSave error:nil];
     }
+     */
     
     //NSString *outputWithExt = [NSString stringWithFormat:@"%@.flac",self.outputPath];
     if ([[NSFileManager defaultManager] fileExistsAtPath:self.outputPath]) {
@@ -200,6 +226,7 @@
                     NSDictionary *utteranceDict = [hypotesis objectAtIndex:0];
                     NSString *resultText = [utteranceDict objectForKey:@"utterance"];
                     NSLog(@"RESULT TEXT : %@",resultText);
+                    [self checkSpeechResult:resultText];
                 }
             }
 
@@ -229,6 +256,64 @@
     NSURLConnection *speechConnection = [NSURLConnection connectionWithRequest:request delegate:self];
     [speechConnection start];
 
+}
+
+
+-(void) loadWebRequest:(NSString*)requestPage
+{
+    //NSString *requestStr = [NSString stringWithFormat:@"http://meeappsmobile.com/sesligazete/%@",requestPage];
+    NSURL *pdfURL = [NSURL URLWithString:requestPage];
+    NSURLRequest *pdfRequest = [NSURLRequest requestWithURL:pdfURL];
+    pdfViewer.scalesPageToFit = YES;
+    [pdfViewer loadRequest:pdfRequest];
+}
+
+
+-(void) readWebRequest:(NSString*)requestPage
+{
+    networkStatus = 0;
+    NSString *requestStr = [NSString stringWithFormat:@"http://meeappsmobile.com/sesligazete/%@",requestPage];
+    NSURL *txtURL = [NSURL URLWithString:requestStr];
+    NSURLRequest *txtRequest = [NSURLRequest requestWithURL:txtURL];
+    
+    
+    NSURLConnection *txtConnection = [[NSURLConnection alloc] initWithRequest:txtRequest delegate:self];
+    [txtConnection start];
+}
+
+-(void) checkSpeechResult:(NSString*)resultText
+{
+    if (MyAcaTTS) {
+        [MyAcaTTS stopSpeaking];
+    }
+    
+    if ([resultText rangeOfString:@"ekonomi"].length > 0) {
+        [self showHUD:@"Ekonomi Haberleri"];
+        self.pageToRead = EKONOMI_SES_FILE;
+        [self loadWebRequest:EKONOMI_HABER_PAGE];
+        [self readWebRequest:self.pageToRead];
+    } else if ([resultText rangeOfString:@"spor"].length > 0) {
+        [self showHUD:@"Spor Haberleri"];
+        self.pageToRead = SPOR_SES_FILE;
+        [self loadWebRequest:SPOR_HABER_PAGE];
+        [self readWebRequest:self.pageToRead];
+    } else  if ([resultText rangeOfString:@"güncel"].length > 0) {
+        [self showHUD:@"Güncel Haberler"];
+        self.pageToRead = GUNCEL_SES_FILE;
+        [self loadWebRequest:GUNCEL_HABER_PAGE];
+        [self readWebRequest:self.pageToRead];
+    }
+}
+
+
+-(void) webViewDidFinishLoad:(UIWebView *)webView
+{
+    [self hideHUD];
+}
+
+-(void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [self hideHUD];
 }
 
 @end

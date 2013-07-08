@@ -24,6 +24,7 @@
 		DA283EA41781DC7200AAF84E /* libMobilityStatic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283EA21781DC7200AAF84E /* libMobilityStatic.a */; };
 		DA283EBA1781E45700AAF84E /* license in Resources */ = {isa = PBXBuildFile; fileRef = DA283EB91781E45700AAF84E /* license */; };
 		DA283EBC1781E72800AAF84E /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283EBB1781E72800AAF84E /* libstdc++.dylib */; };
+		DA57AB2A1786F79D004DE7DD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DA57AB291786F79D004DE7DD /* MBProgressHUD.m */; };
 		DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2427178469B7006171E4 /* AcapelaSetup.m */; };
 		DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2429178469B8006171E4 /* force_cpp.cpp */; };
 		DA7C24511784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz in Resources */ = {isa = PBXBuildFile; fileRef = DA7C24501784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz */; };
@@ -55,6 +56,8 @@
 		DA283EA21781DC7200AAF84E /* libMobilityStatic.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobilityStatic.a; sourceTree = "<group>"; };
 		DA283EB91781E45700AAF84E /* license */ = {isa = PBXFileReference; lastKnownFileType = folder; path = license; sourceTree = "<group>"; };
 		DA283EBB1781E72800AAF84E /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
+		DA57AB281786F79D004DE7DD /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		DA57AB291786F79D004DE7DD /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		DA7C2425178469B7006171E4 /* AcapelaLicense.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcapelaLicense.h; sourceTree = "<group>"; };
 		DA7C2426178469B7006171E4 /* AcapelaSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcapelaSetup.h; sourceTree = "<group>"; };
 		DA7C2427178469B7006171E4 /* AcapelaSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcapelaSetup.m; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 		DA283E5B1781CC2A00AAF84E /* SesliGazete */ = {
 			isa = PBXGroup;
 			children = (
+				DA57AB271786F79D004DE7DD /* hud */,
 				DABBAC8417859F24005E3102 /* wav_to_flac */,
 				DA7C242D17847245006171E4 /* resources */,
 				DA283EA51781DC8000AAF84E /* acapela */,
@@ -169,6 +173,15 @@
 				DA283EB91781E45700AAF84E /* license */,
 			);
 			name = acapela;
+			sourceTree = "<group>";
+		};
+		DA57AB271786F79D004DE7DD /* hud */ = {
+			isa = PBXGroup;
+			children = (
+				DA57AB281786F79D004DE7DD /* MBProgressHUD.h */,
+				DA57AB291786F79D004DE7DD /* MBProgressHUD.m */,
+			);
+			path = hud;
 			sourceTree = "<group>";
 		};
 		DA7C2424178469B7006171E4 /* api */ = {
@@ -292,6 +305,7 @@
 				DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */,
 				DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */,
 				DABBAC891785A266005E3102 /* wav_to_flac.c in Sources */,
+				DA57AB2A1786F79D004DE7DD /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
