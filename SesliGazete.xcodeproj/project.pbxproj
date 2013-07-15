@@ -28,6 +28,8 @@
 		DA57AB2A1786F79D004DE7DD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DA57AB291786F79D004DE7DD /* MBProgressHUD.m */; };
 		DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2427178469B7006171E4 /* AcapelaSetup.m */; };
 		DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2429178469B8006171E4 /* force_cpp.cpp */; };
+		DA866F0F179453060064A94B /* AudioBook.png in Resources */ = {isa = PBXBuildFile; fileRef = DA866F0E179453060064A94B /* AudioBook.png */; };
+		DA866F11179453090064A94B /* AudioBook_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = DA866F10179453090064A94B /* AudioBook_retina.png */; };
 		DABBAC881785A120005E3102 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC871785A120005E3102 /* AVFoundation.framework */; };
 		DABBAC891785A266005E3102 /* wav_to_flac.c in Sources */ = {isa = PBXBuildFile; fileRef = DABBAC8517859F31005E3102 /* wav_to_flac.c */; };
 		DABBACA01785AC0F005E3102 /* libFLACiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC9F1785AC0F005E3102 /* libFLACiOS.a */; };
@@ -65,6 +67,8 @@
 		DA7C2428178469B8006171E4 /* AcapelaSpeech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcapelaSpeech.h; sourceTree = "<group>"; };
 		DA7C2429178469B8006171E4 /* force_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = force_cpp.cpp; sourceTree = "<group>"; };
 		DA7C242A178469B8006171E4 /* force_cpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = force_cpp.h; sourceTree = "<group>"; };
+		DA866F0E179453060064A94B /* AudioBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AudioBook.png; sourceTree = "<group>"; };
+		DA866F10179453090064A94B /* AudioBook_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AudioBook_retina.png; sourceTree = "<group>"; };
 		DABBAC8517859F31005E3102 /* wav_to_flac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = wav_to_flac.c; sourceTree = "<group>"; };
 		DABBAC8617859F31005E3102 /* wav_to_flac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wav_to_flac.h; sourceTree = "<group>"; };
 		DABBAC871785A120005E3102 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -103,6 +107,8 @@
 		DA283E491781CC2A00AAF84E = {
 			isa = PBXGroup;
 			children = (
+				DA866F10179453090064A94B /* AudioBook_retina.png */,
+				DA866F0E179453060064A94B /* AudioBook.png */,
 				DABBACA11785AC1B005E3102 /* Flac-Headers */,
 				DABBAC9F1785AC0F005E3102 /* libFLACiOS.a */,
 				DABBAC871785A120005E3102 /* AVFoundation.framework */,
@@ -289,6 +295,8 @@
 				DA283E751781CC2A00AAF84E /* ViewController_iPad.xib in Resources */,
 				DA283EBA1781E45700AAF84E /* license in Resources */,
 				DA15E12117942E51003A0450 /* hqm-ref-Turkish-Ipek-22khz in Resources */,
+				DA866F0F179453060064A94B /* AudioBook.png in Resources */,
+				DA866F11179453090064A94B /* AudioBook_retina.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +408,8 @@
 		DA283E791781CC2A00AAF84E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: MeeApps Inc (5XANHQCX6U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: MeeApps Inc (5XANHQCX6U)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -412,6 +422,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "C337A472-F66E-4B82-87F9-6535AF3ABDEF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C337A472-F66E-4B82-87F9-6535AF3ABDEF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -419,6 +431,8 @@
 		DA283E7A1781CC2A00AAF84E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: MeeApps Inc (5XANHQCX6U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: MeeApps Inc (5XANHQCX6U)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -431,6 +445,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "C337A472-F66E-4B82-87F9-6535AF3ABDEF";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C337A472-F66E-4B82-87F9-6535AF3ABDEF";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
