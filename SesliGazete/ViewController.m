@@ -209,7 +209,7 @@
 {
     if (networkStatus == 0) {
         NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        //NSLog(@"Result Of Connection IS: %@  Language: %@ Speaker: %@",result,SetupData.CurrentVoice,SetupData.CurrentVoiceName);
+        NSLog(@"Result Of Connection IS: %@  Language: %@ Speaker: %@",result,SetupData.CurrentVoice,SetupData.CurrentVoiceName);
         [MyAcaTTS startSpeakingString:result];
     } else if (networkStatus == 1) {
         

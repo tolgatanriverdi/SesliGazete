@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA15E12117942E51003A0450 /* hqm-ref-Turkish-Ipek-22khz in Resources */ = {isa = PBXBuildFile; fileRef = DA15E12017942E51003A0450 /* hqm-ref-Turkish-Ipek-22khz */; };
 		DA283E561781CC2A00AAF84E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283E551781CC2A00AAF84E /* UIKit.framework */; };
 		DA283E581781CC2A00AAF84E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283E571781CC2A00AAF84E /* Foundation.framework */; };
 		DA283E5A1781CC2A00AAF84E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283E591781CC2A00AAF84E /* CoreGraphics.framework */; };
@@ -27,13 +28,13 @@
 		DA57AB2A1786F79D004DE7DD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DA57AB291786F79D004DE7DD /* MBProgressHUD.m */; };
 		DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2427178469B7006171E4 /* AcapelaSetup.m */; };
 		DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2429178469B8006171E4 /* force_cpp.cpp */; };
-		DA7C24511784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz in Resources */ = {isa = PBXBuildFile; fileRef = DA7C24501784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz */; };
 		DABBAC881785A120005E3102 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC871785A120005E3102 /* AVFoundation.framework */; };
 		DABBAC891785A266005E3102 /* wav_to_flac.c in Sources */ = {isa = PBXBuildFile; fileRef = DABBAC8517859F31005E3102 /* wav_to_flac.c */; };
 		DABBACA01785AC0F005E3102 /* libFLACiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC9F1785AC0F005E3102 /* libFLACiOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA15E12017942E51003A0450 /* hqm-ref-Turkish-Ipek-22khz */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "hqm-ref-Turkish-Ipek-22khz"; sourceTree = "<group>"; };
 		DA283E521781CC2A00AAF84E /* SesliGazete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesliGazete.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA283E551781CC2A00AAF84E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DA283E571781CC2A00AAF84E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,7 +65,6 @@
 		DA7C2428178469B8006171E4 /* AcapelaSpeech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcapelaSpeech.h; sourceTree = "<group>"; };
 		DA7C2429178469B8006171E4 /* force_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = force_cpp.cpp; sourceTree = "<group>"; };
 		DA7C242A178469B8006171E4 /* force_cpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = force_cpp.h; sourceTree = "<group>"; };
-		DA7C24501784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "hqm-ref-USEnglish-Heather-22khz"; sourceTree = "<group>"; };
 		DABBAC8517859F31005E3102 /* wav_to_flac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = wav_to_flac.c; sourceTree = "<group>"; };
 		DABBAC8617859F31005E3102 /* wav_to_flac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wav_to_flac.h; sourceTree = "<group>"; };
 		DABBAC871785A120005E3102 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -200,7 +200,7 @@
 		DA7C242D17847245006171E4 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				DA7C24501784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz */,
+				DA15E12017942E51003A0450 /* hqm-ref-Turkish-Ipek-22khz */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 				DA283E721781CC2A00AAF84E /* ViewController_iPhone.xib in Resources */,
 				DA283E751781CC2A00AAF84E /* ViewController_iPad.xib in Resources */,
 				DA283EBA1781E45700AAF84E /* license in Resources */,
-				DA7C24511784726C006171E4 /* hqm-ref-USEnglish-Heather-22khz in Resources */,
+				DA15E12117942E51003A0450 /* hqm-ref-Turkish-Ipek-22khz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
