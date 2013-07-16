@@ -30,6 +30,8 @@
 		DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2429178469B8006171E4 /* force_cpp.cpp */; };
 		DA866F0F179453060064A94B /* AudioBook.png in Resources */ = {isa = PBXBuildFile; fileRef = DA866F0E179453060064A94B /* AudioBook.png */; };
 		DA866F11179453090064A94B /* AudioBook_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = DA866F10179453090064A94B /* AudioBook_retina.png */; };
+		DA866F131794539F0064A94B /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA866F121794539F0064A94B /* libTestFlight.a */; };
+		DA866F16179454770064A94B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA866F15179454770064A94B /* libz.dylib */; };
 		DABBAC881785A120005E3102 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC871785A120005E3102 /* AVFoundation.framework */; };
 		DABBAC891785A266005E3102 /* wav_to_flac.c in Sources */ = {isa = PBXBuildFile; fileRef = DABBAC8517859F31005E3102 /* wav_to_flac.c */; };
 		DABBACA01785AC0F005E3102 /* libFLACiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC9F1785AC0F005E3102 /* libFLACiOS.a */; };
@@ -69,6 +71,9 @@
 		DA7C242A178469B8006171E4 /* force_cpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = force_cpp.h; sourceTree = "<group>"; };
 		DA866F0E179453060064A94B /* AudioBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AudioBook.png; sourceTree = "<group>"; };
 		DA866F10179453090064A94B /* AudioBook_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AudioBook_retina.png; sourceTree = "<group>"; };
+		DA866F121794539F0064A94B /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
+		DA866F14179453A80064A94B /* TestFlight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
+		DA866F15179454770064A94B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DABBAC8517859F31005E3102 /* wav_to_flac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = wav_to_flac.c; sourceTree = "<group>"; };
 		DABBAC8617859F31005E3102 /* wav_to_flac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wav_to_flac.h; sourceTree = "<group>"; };
 		DABBAC871785A120005E3102 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -89,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA866F16179454770064A94B /* libz.dylib in Frameworks */,
 				DABBAC881785A120005E3102 /* AVFoundation.framework in Frameworks */,
 				DA283EBC1781E72800AAF84E /* libstdc++.dylib in Frameworks */,
 				DA283E7C1781D8B100AAF84E /* AudioToolbox.framework in Frameworks */,
@@ -98,6 +104,7 @@
 				DA283EA31781DC7200AAF84E /* libBabTTS.a in Frameworks */,
 				DA283EA41781DC7200AAF84E /* libMobilityStatic.a in Frameworks */,
 				DABBACA01785AC0F005E3102 /* libFLACiOS.a in Frameworks */,
+				DA866F131794539F0064A94B /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +114,9 @@
 		DA283E491781CC2A00AAF84E = {
 			isa = PBXGroup;
 			children = (
+				DA866F15179454770064A94B /* libz.dylib */,
+				DA866F14179453A80064A94B /* TestFlight.h */,
+				DA866F121794539F0064A94B /* libTestFlight.a */,
 				DA866F10179453090064A94B /* AudioBook_retina.png */,
 				DA866F0E179453060064A94B /* AudioBook.png */,
 				DABBACA11785AC1B005E3102 /* Flac-Headers */,

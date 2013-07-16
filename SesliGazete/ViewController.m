@@ -59,9 +59,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    [self loadWebRequest:GUNCEL_HABER_PAGE];
+    NSURL *pdfURL = [NSURL URLWithString:GUNCEL_HABER_PAGE];
+    NSURLRequest *pdfRequest = [NSURLRequest requestWithURL:pdfURL];
+    pdfViewer.scalesPageToFit = YES;
+    [pdfViewer loadRequest:pdfRequest];
+    
     self.pageToRead = GUNCEL_SES_FILE;
-    pdfViewer.delegate = self;
     
     //TTS INITIALIZE
 	
@@ -117,6 +120,9 @@
 
 - (IBAction)listenPressed:(id)sender
 {
+    [self showHUD:@"Dinliyor"];
+    [MyAcaTTS stopSpeaking];
+    self.listenButton.enabled = NO;
     [recorder record];
     self.recordTimer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(stopRecording) userInfo:nil repeats:NO];
 }
@@ -142,6 +148,7 @@
 
 -(void) stopRecording
 {
+    hud.labelText = @"Ses İnceleniyor";
     NSLog(@"Stoping Record");
     [recorder stop];
     int interval_seconds = 0;
@@ -158,11 +165,6 @@
 
 -(void) deleteExistingFiles
 {
-    /*
-    if ([[NSFileManager defaultManager] fileExistsAtPath:pathToSave]) {
-        [[NSFileManager defaultManager] removeItemAtPath:pathToSave error:nil];
-    }
-     */
     
     //NSString *outputWithExt = [NSString stringWithFormat:@"%@.flac",self.outputPath];
     if ([[NSFileManager defaultManager] fileExistsAtPath:self.outputPath]) {
@@ -207,13 +209,18 @@
 
 -(void) connection:(NSURLConnection*)connection didReceiveData:(NSData *)data
 {
+    
+    
     if (networkStatus == 0) {
         NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"Result Of Connection IS: %@  Language: %@ Speaker: %@",result,SetupData.CurrentVoice,SetupData.CurrentVoiceName);
         [MyAcaTTS startSpeakingString:result];
+        self.readButton.enabled = NO;
     } else if (networkStatus == 1) {
         
+        self.listenButton.enabled = YES;
         [self deleteExistingFiles];
+        [self hideHUD];
         
         NSLog(@"Google Speech Response Geldi");
         NSDictionary * result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -231,6 +238,15 @@
             }
 
         }
+    }
+
+}
+
+-(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    self.listenButton.enabled = YES;
+    if (networkStatus == 1) {
+      [self hideHUD];
     }
 
 }
@@ -264,6 +280,7 @@
     //NSString *requestStr = [NSString stringWithFormat:@"http://meeappsmobile.com/sesligazete/%@",requestPage];
     NSURL *pdfURL = [NSURL URLWithString:requestPage];
     NSURLRequest *pdfRequest = [NSURLRequest requestWithURL:pdfURL];
+    pdfViewer.delegate = self;
     pdfViewer.scalesPageToFit = YES;
     [pdfViewer loadRequest:pdfRequest];
 }
@@ -288,17 +305,20 @@
     }
     
     if ([resultText rangeOfString:@"ekonomi"].length > 0) {
-        [self showHUD:@"Ekonomi Haberleri"];
+        //[self showHUD:@"Ekonomi Haberleri"];
+        hud.labelText = @"Ekonomi Haberleri";
         self.pageToRead = EKONOMI_SES_FILE;
         [self loadWebRequest:EKONOMI_HABER_PAGE];
         [self readWebRequest:self.pageToRead];
     } else if ([resultText rangeOfString:@"spor"].length > 0) {
-        [self showHUD:@"Spor Haberleri"];
+        //[self showHUD:@"Spor Haberleri"];
+         hud.labelText = @"Spor Haberleri";
         self.pageToRead = SPOR_SES_FILE;
         [self loadWebRequest:SPOR_HABER_PAGE];
         [self readWebRequest:self.pageToRead];
     } else  if ([resultText rangeOfString:@"güncel"].length > 0) {
-        [self showHUD:@"Güncel Haberler"];
+        //[self showHUD:@"Güncel Haberler"];
+         hud.labelText = @"Ekonomi Haberleri";
         self.pageToRead = GUNCEL_SES_FILE;
         [self loadWebRequest:GUNCEL_HABER_PAGE];
         [self readWebRequest:self.pageToRead];
@@ -309,11 +329,18 @@
 -(void) webViewDidFinishLoad:(UIWebView *)webView
 {
     [self hideHUD];
+
 }
 
 -(void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    [self hideHUD];
+    [self hideHUD];        
+}
+
+
+-(void) speechSynthesizer:(AcapelaSpeech *)sender didFinishSpeaking:(BOOL)finishedSpeaking
+{
+    self.readButton.enabled = YES;
 }
 
 @end
