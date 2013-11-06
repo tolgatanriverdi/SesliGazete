@@ -28,6 +28,9 @@
 #define SPOR_SES_FILE @"spor_hurriyet.txt"
 #define EKONOMI_SES_FILE @"ekonomi_hurriyet.txt"
 
+#define PHONETICS_FILE @"phonetics.json"
+#define WEB_PAGE @"http://meeappsmobile.com/sesligazete/"
+
 #define ACAPELA_ENABLED 0
 
 
@@ -47,6 +50,8 @@
 @property (nonatomic,strong) AcapelaLicense *MyAcaLicense;
 @property (nonatomic,strong) AcapelaSpeech *MyAcaTTS;
 @property (nonatomic,strong) AcapelaSetup  *SetupData;
+
+@property (nonatomic) BOOL readMode;
 @end
 
 @implementation ViewController
@@ -67,6 +72,8 @@
 @synthesize MyAcaTTS;
 @synthesize SetupData;
 
+@synthesize readMode;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -78,8 +85,9 @@
     [pdfViewer loadRequest:pdfRequest];
     
     self.pageToRead = GUNCEL_SES_FILE;
-    NSString *phoneticJSONPath = [[NSBundle mainBundle] pathForResource:@"phonetics" ofType:@"json"];
-    NSString *phoneticsJSON = [NSString stringWithContentsOfFile:phoneticJSONPath encoding:NSUTF8StringEncoding error:NULL];
+    //NSString *phoneticJSONPath = [[NSBundle mainBundle] pathForResource:@"phonetics" ofType:@"json"];
+    NSURL *phoneticUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",WEB_PAGE,PHONETICS_FILE]];
+    NSString *phoneticsJSON = [NSString stringWithContentsOfURL:phoneticUrl encoding:NSUTF8StringEncoding error:nil];
     
     //NSLog(@"devro: %@", emotionJSON);
     phoneticDictionary = (NSDictionary*)[phoneticsJSON objectFromJSONString];
@@ -120,6 +128,7 @@
     
     
     [self prepareRecording];
+    readMode = NO;
 
 }
 
@@ -132,7 +141,20 @@
 
 - (IBAction)readPressed:(id)sender
 {
-    [self readWebRequest:self.pageToRead];
+    if (!readMode) {
+        readMode = YES;
+        [self readWebRequest:self.pageToRead];
+        self.readButton.title = @"Durdur";
+    } else {
+        readMode = NO;
+        if (ACAPELA_ENABLED) {
+            [MyAcaTTS stopSpeaking];
+        } else {
+            [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
+        }
+        self.readButton.title = @"Okut";
+    }
+
 }
 
 - (IBAction)listenPressed:(id)sender
@@ -143,9 +165,12 @@
     } else {
         [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
     }
-    self.listenButton.enabled = NO;
+    //self.listenButton.enabled = NO;
     [recorder record];
     self.recordTimer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(stopRecording) userInfo:nil repeats:NO];
+    
+    readMode = NO;
+    self.readButton.title = @"Okut";
 }
 
 -(void) showHUD:(NSString*)hudText
@@ -253,7 +278,6 @@
         }
 
         
-        self.readButton.enabled = NO;
     } else if (networkStatus == 1) {
         
         self.listenButton.enabled = YES;
@@ -327,7 +351,7 @@
 -(void) readWebRequest:(NSString*)requestPage
 {
     networkStatus = 0;
-    NSString *requestStr = [NSString stringWithFormat:@"http://meeappsmobile.com/sesligazete/%@",requestPage];
+    NSString *requestStr = [NSString stringWithFormat:@"%@%@",WEB_PAGE,requestPage];
     NSURL *txtURL = [NSURL URLWithString:requestStr];
     NSURLRequest *txtRequest = [NSURLRequest requestWithURL:txtURL];
     
@@ -382,6 +406,8 @@
 -(void) speechSynthesizer:(AcapelaSpeech *)sender didFinishSpeaking:(BOOL)finishedSpeaking
 {
     self.readButton.enabled = YES;
+    self.readButton.title = @"Okut";
+    readMode = NO;
 }
 
 @end
