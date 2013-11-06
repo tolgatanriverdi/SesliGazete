@@ -32,6 +32,8 @@
 		DA866F11179453090064A94B /* AudioBook_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = DA866F10179453090064A94B /* AudioBook_retina.png */; };
 		DA866F131794539F0064A94B /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA866F121794539F0064A94B /* libTestFlight.a */; };
 		DA866F16179454770064A94B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DA866F15179454770064A94B /* libz.dylib */; };
+		DAAA22AF182A2E8D00C8E49C /* phonetics.json in Resources */ = {isa = PBXBuildFile; fileRef = DAAA22AE182A2E8D00C8E49C /* phonetics.json */; };
+		DAAA22B3182A354000C8E49C /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAA22B2182A354000C8E49C /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DABBAC881785A120005E3102 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC871785A120005E3102 /* AVFoundation.framework */; };
 		DABBAC891785A266005E3102 /* wav_to_flac.c in Sources */ = {isa = PBXBuildFile; fileRef = DABBAC8517859F31005E3102 /* wav_to_flac.c */; };
 		DABBACA01785AC0F005E3102 /* libFLACiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC9F1785AC0F005E3102 /* libFLACiOS.a */; };
@@ -74,6 +76,9 @@
 		DA866F121794539F0064A94B /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		DA866F14179453A80064A94B /* TestFlight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		DA866F15179454770064A94B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DAAA22AE182A2E8D00C8E49C /* phonetics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = phonetics.json; sourceTree = "<group>"; };
+		DAAA22B1182A354000C8E49C /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		DAAA22B2182A354000C8E49C /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		DABBAC8517859F31005E3102 /* wav_to_flac.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = wav_to_flac.c; sourceTree = "<group>"; };
 		DABBAC8617859F31005E3102 /* wav_to_flac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wav_to_flac.h; sourceTree = "<group>"; };
 		DABBAC871785A120005E3102 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -153,6 +158,7 @@
 		DA283E5B1781CC2A00AAF84E /* SesliGazete */ = {
 			isa = PBXGroup;
 			children = (
+				DAAA22B0182A354000C8E49C /* JSONKit */,
 				DA57AB271786F79D004DE7DD /* hud */,
 				DABBAC8417859F24005E3102 /* wav_to_flac */,
 				DA7C242D17847245006171E4 /* resources */,
@@ -178,6 +184,7 @@
 				DA283E671781CC2A00AAF84E /* Default.png */,
 				DA283E691781CC2A00AAF84E /* Default@2x.png */,
 				DA283E6B1781CC2A00AAF84E /* Default-568h@2x.png */,
+				DAAA22AE182A2E8D00C8E49C /* phonetics.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -219,6 +226,15 @@
 				DA15E12017942E51003A0450 /* hqm-ref-Turkish-Ipek-22khz */,
 			);
 			name = resources;
+			sourceTree = "<group>";
+		};
+		DAAA22B0182A354000C8E49C /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				DAAA22B1182A354000C8E49C /* JSONKit.h */,
+				DAAA22B2182A354000C8E49C /* JSONKit.m */,
+			);
+			path = JSONKit;
 			sourceTree = "<group>";
 		};
 		DABBAC8417859F24005E3102 /* wav_to_flac */ = {
@@ -300,6 +316,7 @@
 				DA283E601781CC2A00AAF84E /* InfoPlist.strings in Resources */,
 				DA283E681781CC2A00AAF84E /* Default.png in Resources */,
 				DA283E6A1781CC2A00AAF84E /* Default@2x.png in Resources */,
+				DAAA22AF182A2E8D00C8E49C /* phonetics.json in Resources */,
 				DA283E6C1781CC2A00AAF84E /* Default-568h@2x.png in Resources */,
 				DA283E721781CC2A00AAF84E /* ViewController_iPhone.xib in Resources */,
 				DA283E751781CC2A00AAF84E /* ViewController_iPad.xib in Resources */,
@@ -323,6 +340,7 @@
 				DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */,
 				DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */,
 				DABBAC891785A266005E3102 /* wav_to_flac.c in Sources */,
+				DAAA22B3182A354000C8E49C /* JSONKit.m in Sources */,
 				DA57AB2A1786F79D004DE7DD /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,8 +450,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C337A472-F66E-4B82-87F9-6535AF3ABDEF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C337A472-F66E-4B82-87F9-6535AF3ABDEF";
+				PROVISIONING_PROFILE = "8499303C-B68B-4E1D-86B3-7F864CA83075";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8499303C-B68B-4E1D-86B3-7F864CA83075";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -455,8 +473,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C337A472-F66E-4B82-87F9-6535AF3ABDEF";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C337A472-F66E-4B82-87F9-6535AF3ABDEF";
+				PROVISIONING_PROFILE = "8499303C-B68B-4E1D-86B3-7F864CA83075";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8499303C-B68B-4E1D-86B3-7F864CA83075";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

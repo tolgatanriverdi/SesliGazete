@@ -17,21 +17,21 @@
 #include <AVFoundation/AVFoundation.h>
 #include "wav_to_flac.h"
 #include "MBProgressHUD.h"
+#include "JSONKit.h"
 
 
-#define GUNCEL_HABER_PAGE @"http://sozcu.com.tr/2013/gunun-icinden/kizilagactan-takvime-yalanlama.html"
-#define EKONOMI_HABER_PAGE @"http://sozcu.com.tr/2013/ekonomi/borsa-istanbula-dev-ortak.html"
-#define SPOR_HABER_PAGE @"http://sozcu.com.tr/2013/spor/f-bahceli-yildiz-besiktasta.html"
+#define GUNCEL_HABER_PAGE @"http://www.hurriyet.com.tr/gundem/25021285.asp"
+#define EKONOMI_HABER_PAGE @"http://www.hurriyet.com.tr/ekonomi/25026764.asp"
+#define SPOR_HABER_PAGE @"http://www.hurriyet.com.tr/spor/futbol/25022206.asp"
 
-#define GUNCEL_SES_FILE @"guncel.txt"
-#define SPOR_SES_FILE @"spor.txt"
-#define EKONOMI_SES_FILE @"ekonomi.txt"
+#define GUNCEL_SES_FILE @"guncel_hurriyet.txt"
+#define SPOR_SES_FILE @"spor_hurriyet.txt"
+#define EKONOMI_SES_FILE @"ekonomi_hurriyet.txt"
+
+#define ACAPELA_ENABLED 0
 
 
 @interface ViewController ()<NSURLConnectionDelegate,UIWebViewDelegate>
-@property (nonatomic,strong) AcapelaLicense *MyAcaLicense;
-@property (nonatomic,strong) AcapelaSpeech *MyAcaTTS;
-@property (nonatomic,strong) AcapelaSetup  *SetupData;
 @property (nonatomic,strong) AVAudioRecorder *recorder;
 @property (nonatomic,strong) NSTimer *recordTimer;
 @property (nonatomic,strong) NSString *pathToSave;
@@ -39,13 +39,18 @@
 @property (nonatomic) int networkStatus;
 @property (nonatomic,strong) NSString *pageToRead;
 @property (nonatomic,strong) MBProgressHUD *hud;
+@property (nonatomic,strong) AVSpeechSynthesisVoice *appleTTS;
+@property (nonatomic,strong) AVSpeechUtterance *utterance;
+@property (nonatomic,strong) AVSpeechSynthesizer *synthesizer;
+@property (nonatomic,strong) NSDictionary *phoneticDictionary;
+
+@property (nonatomic,strong) AcapelaLicense *MyAcaLicense;
+@property (nonatomic,strong) AcapelaSpeech *MyAcaTTS;
+@property (nonatomic,strong) AcapelaSetup  *SetupData;
 @end
 
 @implementation ViewController
 @synthesize pdfViewer;
-@synthesize MyAcaLicense;
-@synthesize MyAcaTTS;
-@synthesize SetupData;
 @synthesize recorder;
 @synthesize recordTimer;
 @synthesize pathToSave;
@@ -53,6 +58,14 @@
 @synthesize networkStatus;
 @synthesize pageToRead;
 @synthesize hud;
+@synthesize appleTTS;
+@synthesize utterance;
+@synthesize synthesizer;
+@synthesize phoneticDictionary;
+
+@synthesize MyAcaLicense;
+@synthesize MyAcaTTS;
+@synthesize SetupData;
 
 - (void)viewDidLoad
 {
@@ -65,41 +78,45 @@
     [pdfViewer loadRequest:pdfRequest];
     
     self.pageToRead = GUNCEL_SES_FILE;
+    NSString *phoneticJSONPath = [[NSBundle mainBundle] pathForResource:@"phonetics" ofType:@"json"];
+    NSString *phoneticsJSON = [NSString stringWithContentsOfFile:phoneticJSONPath encoding:NSUTF8StringEncoding error:NULL];
     
-    //TTS INITIALIZE
-	
-	// Create the default UserDico for the voice delivered in the bundle
-	NSError * error;
-	
-	// Get the application Documents folder
-	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString *documentsDirectory = [paths objectAtIndex:0];
-	
-	// Creates heather folder if it doesn't exist already
-	NSString * dirDicoPath = [documentsDirectory stringByAppendingString:[NSString stringWithFormat:@"/heather"]];
-	[[NSFileManager defaultManager] createDirectoryAtPath:dirDicoPath withIntermediateDirectories: YES attributes:nil error: &error];
-	
-	NSString * fullDicoPath = [documentsDirectory stringByAppendingString:[NSString stringWithFormat:@"/heather/default.userdico"]];
-	// Check the file doesn't already exists to avoid to erase its content
-	if (![[NSFileManager defaultManager] fileExistsAtPath: fullDicoPath]) {
-		
-		// Create the file
-		if (![@"UserDico\n" writeToFile:fullDicoPath atomically:YES encoding:NSISOLatin1StringEncoding error:&error]) {
-			NSLog(@"%@",error);
-			return;
-		}
-	}
+    //NSLog(@"devro: %@", emotionJSON);
+    phoneticDictionary = (NSDictionary*)[phoneticsJSON objectFromJSONString];
     
     
-    NSString* aLicenseString = [[NSString alloc] initWithCString:babLicense
-                                                        encoding:NSASCIIStringEncoding];
-    MyAcaLicense = [[AcapelaLicense alloc] initLicense:aLicenseString user:uid.userId
-                                                passwd:uid.passwd];
-    SetupData = [[AcapelaSetup alloc] initialize];
-    MyAcaTTS = [[AcapelaSpeech alloc] initWithVoice:SetupData.CurrentVoice
-                                            license:MyAcaLicense];
+    if (ACAPELA_ENABLED) {
+        //TTS INITIALIZE
+        
+        // Create the default UserDico for the voice delivered in the bundle
+        NSError * error;
+        
+        // Get the application Documents folder
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        
+        // Creates heather folder if it doesn't exist already
+        NSString * dirDicoPath = [documentsDirectory stringByAppendingString:[NSString stringWithFormat:@"/heather"]];
+        [[NSFileManager defaultManager] createDirectoryAtPath:dirDicoPath withIntermediateDirectories: YES attributes:nil error: &error];
+        
+        //NSString * fullDicoPath = [documentsDirectory stringByAppendingString:[NSString stringWithFormat:@"/heather/default.userdico"]];
+        
+        NSString* aLicenseString = [[NSString alloc] initWithCString:babLicense encoding:NSASCIIStringEncoding];
+        MyAcaLicense = [[AcapelaLicense alloc] initLicense:aLicenseString user:uid.userId passwd:uid.passwd];
+        SetupData = [[AcapelaSetup alloc] initialize];
+        MyAcaTTS = [[AcapelaSpeech alloc] initWithVoice:SetupData.CurrentVoice license:MyAcaLicense];
+        
+        [MyAcaTTS setDelegate:self];
+        // Check the file doesn't already exists to avoid to erase its content
+    } else {
+        appleTTS = [AVSpeechSynthesisVoice voiceWithLanguage:@"tr-TR"];
+        synthesizer = [[AVSpeechSynthesizer alloc] init];
+    }
+
     
-    [MyAcaTTS setDelegate:self];
+    
+
+
     
     
     [self prepareRecording];
@@ -121,7 +138,11 @@
 - (IBAction)listenPressed:(id)sender
 {
     [self showHUD:@"Dinliyor"];
-    [MyAcaTTS stopSpeaking];
+    if (ACAPELA_ENABLED) {
+        [MyAcaTTS stopSpeaking];
+    } else {
+        [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
+    }
     self.listenButton.enabled = NO;
     [recorder record];
     self.recordTimer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(stopRecording) userInfo:nil repeats:NO];
@@ -212,9 +233,26 @@
     
     
     if (networkStatus == 0) {
-        NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"Result Of Connection IS: %@  Language: %@ Speaker: %@",result,SetupData.CurrentVoice,SetupData.CurrentVoiceName);
-        [MyAcaTTS startSpeakingString:result];
+        __block NSString *result = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        if (phoneticDictionary) {
+            [phoneticDictionary enumerateKeysAndObjectsUsingBlock:^(id key,id obj,BOOL *stop) {
+                NSString *phoneticKey = (NSString* ) key;
+                NSString *phoneticVal = (NSString* ) obj;
+                result = [result stringByReplacingOccurrencesOfString:phoneticKey withString:phoneticVal];
+            }];
+        }
+        
+        if (ACAPELA_ENABLED) {
+            [MyAcaTTS startSpeakingString:result];
+        } else {
+            utterance = [AVSpeechUtterance speechUtteranceWithString:result];
+            utterance.voice = appleTTS;
+            utterance.rate = 0.25;
+            [synthesizer speakUtterance:utterance];
+        }
+
+        
         self.readButton.enabled = NO;
     } else if (networkStatus == 1) {
         
@@ -300,8 +338,11 @@
 
 -(void) checkSpeechResult:(NSString*)resultText
 {
-    if (MyAcaTTS) {
+    
+    if (ACAPELA_ENABLED) {
         [MyAcaTTS stopSpeaking];
+    } else {
+        [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
     }
     
     if ([resultText rangeOfString:@"ekonomi"].length > 0) {
