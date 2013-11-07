@@ -124,13 +124,11 @@
     
     
 
-
-    
-    
-    [self prepareRecording];
     readMode = NO;
+    [self prepareRecording];
 
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -248,6 +246,9 @@
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     [audioSession setActive:YES error:nil];
+    UInt32 doChangeDefaultRoute = 1;
+    
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,sizeof (doChangeDefaultRoute),&doChangeDefaultRoute);
     recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:nil];
     
     [recorder prepareToRecord];
