@@ -142,9 +142,7 @@
 - (IBAction)readPressed:(id)sender
 {
     if (!readMode) {
-        readMode = YES;
         [self readWebRequest:self.pageToRead];
-        self.readButton.title = @"Durdur";
     } else {
         readMode = NO;
         if (ACAPELA_ENABLED) {
@@ -247,6 +245,9 @@
     
     
     // Create recorder
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [audioSession setActive:YES error:nil];
     recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:nil];
     
     [recorder prepareToRecord];
@@ -350,14 +351,19 @@
 
 -(void) readWebRequest:(NSString*)requestPage
 {
-    networkStatus = 0;
-    NSString *requestStr = [NSString stringWithFormat:@"%@%@",WEB_PAGE,requestPage];
-    NSURL *txtURL = [NSURL URLWithString:requestStr];
-    NSURLRequest *txtRequest = [NSURLRequest requestWithURL:txtURL];
-    
-    
-    NSURLConnection *txtConnection = [[NSURLConnection alloc] initWithRequest:txtRequest delegate:self];
-    [txtConnection start];
+    if (!readMode) {
+        readMode = YES;
+        self.readButton.title = @"Durdur";
+        networkStatus = 0;
+        NSString *requestStr = [NSString stringWithFormat:@"%@%@",WEB_PAGE,requestPage];
+        NSURL *txtURL = [NSURL URLWithString:requestStr];
+        NSURLRequest *txtRequest = [NSURLRequest requestWithURL:txtURL];
+        
+        
+        NSURLConnection *txtConnection = [[NSURLConnection alloc] initWithRequest:txtRequest delegate:self];
+        [txtConnection start];
+    }
+
 }
 
 -(void) checkSpeechResult:(NSString*)resultText
@@ -368,6 +374,9 @@
     } else {
         [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
     }
+    readMode = NO;
+    self.readButton.title = @"Okut";
+    
     
     if ([resultText rangeOfString:@"ekonomi"].length > 0) {
         //[self showHUD:@"Ekonomi Haberleri"];
