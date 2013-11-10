@@ -86,6 +86,7 @@
     
     self.pageToRead = GUNCEL_SES_FILE;
     //NSString *phoneticJSONPath = [[NSBundle mainBundle] pathForResource:@"phonetics" ofType:@"json"];
+    //NSURL *phoneticUrl = [NSURL URLWithString:phoneticJSONPath];
     NSURL *phoneticUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",WEB_PAGE,PHONETICS_FILE]];
     NSString *phoneticsJSON = [NSString stringWithContentsOfURL:phoneticUrl encoding:NSUTF8StringEncoding error:nil];
     
@@ -266,7 +267,7 @@
             [phoneticDictionary enumerateKeysAndObjectsUsingBlock:^(id key,id obj,BOOL *stop) {
                 NSString *phoneticKey = (NSString* ) key;
                 NSString *phoneticVal = (NSString* ) obj;
-                result = [result stringByReplacingOccurrencesOfString:phoneticKey withString:phoneticVal];
+                result = [result stringByReplacingOccurrencesOfString:phoneticKey withString:phoneticVal options:NSCaseInsensitiveSearch range:NSMakeRange(0, [result length])];
             }];
         }
         
