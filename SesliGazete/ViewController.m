@@ -31,7 +31,7 @@
 #define PHONETICS_FILE @"phonetics.json"
 #define WEB_PAGE @"http://meeappsmobile.com/sesligazete/"
 
-#define ACAPELA_ENABLED 0
+
 
 
 @interface ViewController ()<NSURLConnectionDelegate,UIWebViewDelegate>
@@ -94,7 +94,7 @@
     phoneticDictionary = (NSDictionary*)[phoneticsJSON objectFromJSONString];
     
     
-    if (ACAPELA_ENABLED) {
+    if (!IS_IOS7) {
         //TTS INITIALIZE
         
         // Create the default UserDico for the voice delivered in the bundle
@@ -144,7 +144,7 @@
         [self readWebRequest:self.pageToRead];
     } else {
         readMode = NO;
-        if (ACAPELA_ENABLED) {
+        if (!IS_IOS7) {
             [MyAcaTTS stopSpeaking];
         } else {
             [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
@@ -157,7 +157,7 @@
 - (IBAction)listenPressed:(id)sender
 {
     [self showHUD:@"Dinliyor"];
-    if (ACAPELA_ENABLED) {
+    if (!IS_IOS7) {
         [MyAcaTTS stopSpeaking];
     } else {
         [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
@@ -271,7 +271,7 @@
             }];
         }
         
-        if (ACAPELA_ENABLED) {
+        if (!IS_IOS7) {
             [MyAcaTTS startSpeakingString:result];
         } else {
             utterance = [AVSpeechUtterance speechUtteranceWithString:result];
@@ -371,7 +371,7 @@
 -(void) checkSpeechResult:(NSString*)resultText
 {
     
-    if (ACAPELA_ENABLED) {
+    if (!IS_IOS7) {
         [MyAcaTTS stopSpeaking];
     } else {
         [synthesizer stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
