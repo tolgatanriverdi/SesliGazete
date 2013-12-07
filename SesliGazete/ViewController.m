@@ -19,6 +19,9 @@
 #include "MBProgressHUD.h"
 #include "JSONKit.h"
 
+#import "GADBannerView.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 #define GUNCEL_HABER_PAGE @"http://www.hurriyet.com.tr/gundem/25021285.asp"
 #define EKONOMI_HABER_PAGE @"http://www.hurriyet.com.tr/ekonomi/25026764.asp"
@@ -34,7 +37,7 @@
 
 
 
-@interface ViewController ()<NSURLConnectionDelegate,UIWebViewDelegate>
+@interface ViewController ()<NSURLConnectionDelegate,UIWebViewDelegate,CLLocationManagerDelegate>
 @property (nonatomic,strong) AVAudioRecorder *recorder;
 @property (nonatomic,strong) NSTimer *recordTimer;
 @property (nonatomic,strong) NSString *pathToSave;
@@ -52,6 +55,11 @@
 @property (nonatomic,strong) AcapelaSetup  *SetupData;
 
 @property (nonatomic) BOOL readMode;
+
+
+@property (nonatomic,strong) GADBannerView *bannerView_;
+@property (nonatomic,strong) CLLocationManager *locationManager;
+
 @end
 
 @implementation ViewController
@@ -73,11 +81,32 @@
 @synthesize SetupData;
 
 @synthesize readMode;
+@synthesize bannerView_;
+@synthesize locationManager;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    [locationManager startUpdatingLocation];
+    
+    
+    // Create a view of the standard size at the top of the screen.
+    // Available AdSize constants are explained in GADAdSize.h.
+    bannerView_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    
+    // Specify the ad unit ID.
+    bannerView_.adUnitID = @"ca-app-pub-8382041452098148/8124622910";
+    
+    // Let the runtime know which UIViewController to restore after taking
+    // the user wherever the ad goes and add it to the view hierarchy.
+    bannerView_.rootViewController = self;
+    [self.view addSubview:bannerView_];
+    
+    [bannerView_ loadRequest:[GADRequest request]];
     
     NSURL *pdfURL = [NSURL URLWithString:GUNCEL_HABER_PAGE];
     NSURLRequest *pdfRequest = [NSURLRequest requestWithURL:pdfURL];
@@ -419,6 +448,20 @@
     self.readButton.enabled = YES;
     self.readButton.title = @"Okut";
     readMode = NO;
+}
+
+
+-(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    if ([locations count]) {
+        CLLocation *loc = [locations lastObject];
+        CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+        [geoCoder reverseGeocodeLocation:loc completionHandler:^(NSArray *placemarks, NSError *error) {
+            for (CLPlacemark * placemark in placemarks) {
+                //NSLog(@"Current Location: %@",[placemark locality]);
+            }
+        }];
+    }
 }
 
 @end

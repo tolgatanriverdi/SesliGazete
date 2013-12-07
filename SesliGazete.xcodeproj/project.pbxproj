@@ -37,6 +37,12 @@
 		DABBAC881785A120005E3102 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC871785A120005E3102 /* AVFoundation.framework */; };
 		DABBAC891785A266005E3102 /* wav_to_flac.c in Sources */ = {isa = PBXBuildFile; fileRef = DABBAC8517859F31005E3102 /* wav_to_flac.c */; };
 		DABBACA01785AC0F005E3102 /* libFLACiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DABBAC9F1785AC0F005E3102 /* libFLACiOS.a */; };
+		DAD661F61853875E0025D194 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD661F51853875E0025D194 /* libGoogleAdMobAds.a */; };
+		DAD661F81853883B0025D194 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD661F71853883B0025D194 /* AdSupport.framework */; };
+		DAD661FA1853884B0025D194 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD661F91853884B0025D194 /* MessageUI.framework */; };
+		DAD661FC1853884F0025D194 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD661FB1853884F0025D194 /* StoreKit.framework */; };
+		DAD661FE185388580025D194 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD661FD185388580025D194 /* SystemConfiguration.framework */; };
+		DAD6620018538C840025D194 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAD661FF18538C840025D194 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +98,21 @@
 		DABBACA81785AC1B005E3102 /* ordinals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ordinals.h; sourceTree = "<group>"; };
 		DABBACA91785AC1B005E3102 /* stream_decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stream_decoder.h; sourceTree = "<group>"; };
 		DABBACAA1785AC1B005E3102 /* stream_encoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stream_encoder.h; sourceTree = "<group>"; };
+		DAD661EC1853875E0025D194 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
+		DAD661ED1853875E0025D194 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
+		DAD661EE1853875E0025D194 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
+		DAD661EF1853875E0025D194 /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
+		DAD661F01853875E0025D194 /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
+		DAD661F11853875E0025D194 /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
+		DAD661F21853875E0025D194 /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitialDelegate.h; sourceTree = "<group>"; };
+		DAD661F31853875E0025D194 /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
+		DAD661F41853875E0025D194 /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
+		DAD661F51853875E0025D194 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		DAD661F71853883B0025D194 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		DAD661F91853884B0025D194 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		DAD661FB1853884F0025D194 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		DAD661FD185388580025D194 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		DAD661FF18538C840025D194 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +120,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAD6620018538C840025D194 /* CoreLocation.framework in Frameworks */,
+				DAD661FE185388580025D194 /* SystemConfiguration.framework in Frameworks */,
+				DAD661FC1853884F0025D194 /* StoreKit.framework in Frameworks */,
+				DAD661FA1853884B0025D194 /* MessageUI.framework in Frameworks */,
+				DA283E7C1781D8B100AAF84E /* AudioToolbox.framework in Frameworks */,
+				DAD661F81853883B0025D194 /* AdSupport.framework in Frameworks */,
+				DAD661F61853875E0025D194 /* libGoogleAdMobAds.a in Frameworks */,
 				DA866F16179454770064A94B /* libz.dylib in Frameworks */,
 				DABBAC881785A120005E3102 /* AVFoundation.framework in Frameworks */,
 				DA283EBC1781E72800AAF84E /* libstdc++.dylib in Frameworks */,
-				DA283E7C1781D8B100AAF84E /* AudioToolbox.framework in Frameworks */,
 				DA283E561781CC2A00AAF84E /* UIKit.framework in Frameworks */,
 				DA283E581781CC2A00AAF84E /* Foundation.framework in Frameworks */,
 				DA283E5A1781CC2A00AAF84E /* CoreGraphics.framework in Frameworks */,
@@ -148,6 +175,11 @@
 		DA283E541781CC2A00AAF84E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DAD661FF18538C840025D194 /* CoreLocation.framework */,
+				DAD661FD185388580025D194 /* SystemConfiguration.framework */,
+				DAD661FB1853884F0025D194 /* StoreKit.framework */,
+				DAD661F91853884B0025D194 /* MessageUI.framework */,
+				DAD661F71853883B0025D194 /* AdSupport.framework */,
 				DA283E551781CC2A00AAF84E /* UIKit.framework */,
 				DA283E571781CC2A00AAF84E /* Foundation.framework */,
 				DA283E591781CC2A00AAF84E /* CoreGraphics.framework */,
@@ -158,6 +190,7 @@
 		DA283E5B1781CC2A00AAF84E /* SesliGazete */ = {
 			isa = PBXGroup;
 			children = (
+				DAD661EB1853874C0025D194 /* AdMob */,
 				DAAA22B0182A354000C8E49C /* JSONKit */,
 				DA57AB271786F79D004DE7DD /* hud */,
 				DABBAC8417859F24005E3102 /* wav_to_flac */,
@@ -260,6 +293,23 @@
 				DABBACAA1785AC1B005E3102 /* stream_encoder.h */,
 			);
 			path = "Flac-Headers";
+			sourceTree = "<group>";
+		};
+		DAD661EB1853874C0025D194 /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				DAD661EC1853875E0025D194 /* GADAdMobExtras.h */,
+				DAD661ED1853875E0025D194 /* GADAdNetworkExtras.h */,
+				DAD661EE1853875E0025D194 /* GADAdSize.h */,
+				DAD661EF1853875E0025D194 /* GADBannerView.h */,
+				DAD661F01853875E0025D194 /* GADBannerViewDelegate.h */,
+				DAD661F11853875E0025D194 /* GADInterstitial.h */,
+				DAD661F21853875E0025D194 /* GADInterstitialDelegate.h */,
+				DAD661F31853875E0025D194 /* GADRequest.h */,
+				DAD661F41853875E0025D194 /* GADRequestError.h */,
+				DAD661F51853875E0025D194 /* libGoogleAdMobAds.a */,
+			);
+			name = AdMob;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,8 +497,10 @@
 				INFOPLIST_FILE = "SesliGazete/SesliGazete-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/Netas3/Desktop/Kisisel/SesliGazete/SesliGazete,
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8499303C-B68B-4E1D-86B3-7F864CA83075";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8499303C-B68B-4E1D-86B3-7F864CA83075";
@@ -470,8 +522,10 @@
 				INFOPLIST_FILE = "SesliGazete/SesliGazete-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/Netas3/Desktop/Kisisel/SesliGazete/SesliGazete,
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "8499303C-B68B-4E1D-86B3-7F864CA83075";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8499303C-B68B-4E1D-86B3-7F864CA83075";
