@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA0253611858C7C400D84E3B /* AvAdsBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0253601858C7C400D84E3B /* AvAdsBannerView.m */; };
 		DA15E12117942E51003A0450 /* hqm-ref-Turkish-Ipek-22khz in Resources */ = {isa = PBXBuildFile; fileRef = DA15E12017942E51003A0450 /* hqm-ref-Turkish-Ipek-22khz */; };
 		DA283E561781CC2A00AAF84E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283E551781CC2A00AAF84E /* UIKit.framework */; };
 		DA283E581781CC2A00AAF84E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA283E571781CC2A00AAF84E /* Foundation.framework */; };
@@ -46,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA02535F1858C7C400D84E3B /* AvAdsBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvAdsBannerView.h; sourceTree = "<group>"; };
+		DA0253601858C7C400D84E3B /* AvAdsBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvAdsBannerView.m; sourceTree = "<group>"; };
 		DA15E12017942E51003A0450 /* hqm-ref-Turkish-Ipek-22khz */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "hqm-ref-Turkish-Ipek-22khz"; sourceTree = "<group>"; };
 		DA283E521781CC2A00AAF84E /* SesliGazete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SesliGazete.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA283E551781CC2A00AAF84E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -203,6 +206,8 @@
 				DA283E701781CC2A00AAF84E /* ViewController_iPhone.xib */,
 				DA283E731781CC2A00AAF84E /* ViewController_iPad.xib */,
 				DA283E5C1781CC2A00AAF84E /* Supporting Files */,
+				DA02535F1858C7C400D84E3B /* AvAdsBannerView.h */,
+				DA0253601858C7C400D84E3B /* AvAdsBannerView.m */,
 			);
 			path = SesliGazete;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				DA283E4E1781CC2A00AAF84E /* Sources */,
 				DA283E4F1781CC2A00AAF84E /* Frameworks */,
 				DA283E501781CC2A00AAF84E /* Resources */,
+				DA72EDA61858E3A90041BDFF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -379,6 +385,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DA72EDA61858E3A90041BDFF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "    /usr/local/bin/appledoc --project-name \"${PROJECT_NAME}\" --project-company \"ARGELA\" --company-id \"tr.com.argela\" --docset-atom-filename \"ARGELA.atom\" --docset-feed-url \"http://argela.com.tr/addsdocs/%DOCSETATOMFILENAME\" --docset-package-url \"http://argela.com.tr/addsdoc/%DOCSETPACKAGEFILENAME\" --docset-fallback-url \"http://argela.com.tr/addsdoc\" --output \"/Users/Netas3/Desktop/Docs\" --publish-docset --docset-platform-family \"iphoneos\" --logformat xcode --keep-intermediate-files --no-repeat-first-par --no-warn-invalid-crossref --exit-threshold 2 \"${PROJECT_DIR}\"";
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DA283E4E1781CC2A00AAF84E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -389,6 +411,7 @@
 				DA283E6F1781CC2A00AAF84E /* ViewController.m in Sources */,
 				DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */,
 				DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */,
+				DA0253611858C7C400D84E3B /* AvAdsBannerView.m in Sources */,
 				DABBAC891785A266005E3102 /* wav_to_flac.c in Sources */,
 				DAAA22B3182A354000C8E49C /* JSONKit.m in Sources */,
 				DA57AB2A1786F79D004DE7DD /* MBProgressHUD.m in Sources */,
