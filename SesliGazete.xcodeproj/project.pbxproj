@@ -396,7 +396,7 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "    /usr/local/bin/appledoc --project-name \"${PROJECT_NAME}\" --project-company \"ARGELA\" --company-id \"tr.com.argela\" --docset-atom-filename \"ARGELA.atom\" --docset-feed-url \"http://argela.com.tr/addsdocs/%DOCSETATOMFILENAME\" --docset-package-url \"http://argela.com.tr/addsdoc/%DOCSETPACKAGEFILENAME\" --docset-fallback-url \"http://argela.com.tr/addsdoc\" --output \"/Users/Netas3/Desktop/Docs\" --publish-docset --docset-platform-family \"iphoneos\" --logformat xcode --keep-intermediate-files --no-repeat-first-par --no-warn-invalid-crossref --exit-threshold 2 \"${PROJECT_DIR}\"";
+			shellPath = "/usr/local/bin/appledoc --project-name \"AVADSBANNER\" --project-company \"ARGELA\" --company-id \"tr.com.argela\" --docset-atom-filename \"ARGELA.atom\" --docset-feed-url \"http://argela.com.tr/addsdocs/%DOCSETATOMFILENAME\" --docset-package-url \"http://argela.com.tr/addsdoc/%DOCSETPACKAGEFILENAME\" --docset-fallback-url \"http://argela.com.tr/addsdoc\" --output \"/Users/Netas3/Desktop/Docs\" --publish-docset --docset-platform-family \"iphoneos\" --logformat xcode --keep-intermediate-files --no-repeat-first-par --no-warn-invalid-crossref --exit-threshold 2 \"${PROJECT_DIR}\"";
 			shellScript = "";
 		};
 /* End PBXShellScriptBuildPhase section */

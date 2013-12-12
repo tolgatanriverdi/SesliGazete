@@ -8,12 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-/**---------------------------------------------------------------------------------------
- * @name AVADSBANNERDELEGATE METHODS
- *  ---------------------------------------------------------------------------------------
- */
-
 @protocol AVAdsBannerDelegate<NSObject>
+
 /** Delegate method for informing activation(showing) of a banner is succeeded.
  
  Activation of a Banner is succesfull in cases.
@@ -69,18 +65,14 @@
  */
 
 
-typedef struct AVAdSize {
-    CGSize size;
-    NSUInteger flags;
-} AVAdSize;
-
-
-/** Creates shared instance of Avea Ads Banner FrameWork.
+/** Creates shared instance(singleton) of Avea Ads Banner FrameWork.
  
  You have to get the shared Instance by providing publisherID.
  
  - You can get publisher ID From Avea Adds Platform
+ - You can only set publisherID while you are creating shared Instance
  - Its a private information and please do not share it with anyone
+ - Location information(if permitted by user) and your application's bundle id will be detected by Avea ADDS SDK automaticly.You dont need to give any other information
  
  @param publisherID PublisherID string is mandatory and will be provided to you with framework.
  @return shared instance of AvAdsBanner Class(Only interface of Avea Ads Framework).
@@ -144,6 +136,22 @@ typedef struct AVAdSize {
  
  */
 @property (nonatomic, copy) NSString *blindID;
+
+
+/** Contextual information for providing targeted advertisments.
+ 
+ If you want to show specific kind of advertisments you can provide keyword with such strings :
+ 
+ - Spor
+ - Teknoloji
+ - Borsa
+ 
+ list of strings that you can use as keyword will be provided to you by Avea ADS Platform.
+ If you want to use more than one string as a keyWord, you should create your string with , delimeter like
+ NSString *keywords = @"Spor,Borsa,Teknoloji";
+ 
+ */
+@property (nonatomic,copy) NSString *keyWord;
 
 
 @end
