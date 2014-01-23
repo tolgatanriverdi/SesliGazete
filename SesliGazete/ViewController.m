@@ -15,6 +15,7 @@
 #include "./License/evaluation.lic.password"
 
 #include <AVFoundation/AVFoundation.h>
+#import <MAPSDK-IOS/MAPSDK.h>
 #include "wav_to_flac.h"
 #include "MBProgressHUD.h"
 #include "JSONKit.h"
@@ -34,7 +35,7 @@
 
 
 
-@interface ViewController ()<NSURLConnectionDelegate,UIWebViewDelegate>
+@interface ViewController ()<NSURLConnectionDelegate,UIWebViewDelegate,MAPSDKDelegate>
 @property (nonatomic,strong) AVAudioRecorder *recorder;
 @property (nonatomic,strong) NSTimer *recordTimer;
 @property (nonatomic,strong) NSString *pathToSave;
@@ -50,6 +51,9 @@
 @property (nonatomic,strong) AcapelaLicense *MyAcaLicense;
 @property (nonatomic,strong) AcapelaSpeech *MyAcaTTS;
 @property (nonatomic,strong) AcapelaSetup  *SetupData;
+
+@property (nonatomic,strong) MAPSDK* mapSDKInstance;
+@property (nonatomic,assign) UIView* bannerView;
 
 @property (nonatomic) BOOL readMode;
 @end
@@ -73,6 +77,8 @@
 @synthesize SetupData;
 
 @synthesize readMode;
+@synthesize mapSDKInstance;
+@synthesize bannerView;
 
 - (void)viewDidLoad
 {
@@ -127,9 +133,31 @@
 
     readMode = NO;
     [self prepareRecording];
+    
+    mapSDKInstance = [MAPSDK sharedInstance:@"tolgasdktest1"];
+    
 
 }
 
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [mapSDKInstance addDelegate:self];
+    mapSDKInstance.parentViewController = self;
+    
+    
+    bannerView = [mapSDKInstance getMAPSDKBanner:@"main_banner" andKeyword:@"Spor" withBannerHeight:MAPBANNERHEIGHT_DEFAULT];
+    [self.view addSubview:bannerView];
+    
+}
+
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [mapSDKInstance removeDelegate:self];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -386,18 +414,26 @@
         self.pageToRead = EKONOMI_SES_FILE;
         [self loadWebRequest:EKONOMI_HABER_PAGE];
         [self readWebRequest:self.pageToRead];
+        
+        [self reOpenBannerView];
+        
     } else if ([resultText rangeOfString:@"spor"].length > 0) {
         //[self showHUD:@"Spor Haberleri"];
          hud.labelText = @"Spor Haberleri";
         self.pageToRead = SPOR_SES_FILE;
         [self loadWebRequest:SPOR_HABER_PAGE];
         [self readWebRequest:self.pageToRead];
+        
+        [self reOpenBannerView];
+        
     } else  if ([resultText rangeOfString:@"güncel"].length > 0) {
         //[self showHUD:@"Güncel Haberler"];
          hud.labelText = @"Ekonomi Haberleri";
         self.pageToRead = GUNCEL_SES_FILE;
         [self loadWebRequest:GUNCEL_HABER_PAGE];
         [self readWebRequest:self.pageToRead];
+        
+        [self reOpenBannerView];
     }
 }
 
@@ -419,6 +455,30 @@
     self.readButton.enabled = YES;
     self.readButton.title = @"Okut";
     readMode = NO;
+}
+
+#pragma mark MAPSDK Delegate Methods
+
+-(void) activateBannerDidSucceed:(NSString *)inventoryName
+{
+    NSLog(@"%s InventoryName: %@",__PRETTY_FUNCTION__,inventoryName);
+    bannerView.frame = CGRectMake(0, 40 , bannerView.frame.size.width, bannerView.frame.size.height);
+    [bannerView setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin];
+}
+
+-(void) activateBannerDidFailed:(NSString *)inventoryName withError:(MAPErrorCodes)errorCode
+{
+    //NSLog(@"%s InventoryName: %@ ErrorCode: %d",inventoryName,errorCode);
+    [self performSelector:@selector(reOpenBannerView) withObject:nil afterDelay:3.0];
+}
+
+
+-(void) reOpenBannerView
+{
+    [mapSDKInstance closeMAPSDKBanner:@"main_banner"];
+    bannerView = [mapSDKInstance getMAPSDKBanner:@"main_banner" andKeyword:@"Spor" withBannerHeight:MAPBANNERHEIGHT_DEFAULT];
+    //bannerView.frame = CGRectMake(bannerView.frame.origin.x,bannerView.frame.origin.y , bannerView.frame.size.width, bannerView.frame.size.height);
+    [self.view addSubview:bannerView];
 }
 
 @end

@@ -28,6 +28,12 @@
 		DA57AB2A1786F79D004DE7DD /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = DA57AB291786F79D004DE7DD /* MBProgressHUD.m */; };
 		DA7C242B178469B8006171E4 /* AcapelaSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2427178469B7006171E4 /* AcapelaSetup.m */; };
 		DA7C242C178469B8006171E4 /* force_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7C2429178469B8006171E4 /* force_cpp.cpp */; };
+		DA8571FA1890707900BA5E7D /* MAPSDK-IOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8571F91890707900BA5E7D /* MAPSDK-IOS.framework */; };
+		DA8571FC189073C900BA5E7D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8571FB189073C900BA5E7D /* Security.framework */; };
+		DA8572001890743300BA5E7D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8571FF1890743300BA5E7D /* MessageUI.framework */; };
+		DA8572021890744200BA5E7D /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8572011890744200BA5E7D /* AdSupport.framework */; };
+		DA8572041890744D00BA5E7D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA8572031890744D00BA5E7D /* CoreLocation.framework */; };
+		DA857206189074CC00BA5E7D /* map.lic in Resources */ = {isa = PBXBuildFile; fileRef = DA857205189074CC00BA5E7D /* map.lic */; };
 		DA866F0F179453060064A94B /* AudioBook.png in Resources */ = {isa = PBXBuildFile; fileRef = DA866F0E179453060064A94B /* AudioBook.png */; };
 		DA866F11179453090064A94B /* AudioBook_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = DA866F10179453090064A94B /* AudioBook_retina.png */; };
 		DA866F131794539F0064A94B /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA866F121794539F0064A94B /* libTestFlight.a */; };
@@ -71,6 +77,13 @@
 		DA7C2428178469B8006171E4 /* AcapelaSpeech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcapelaSpeech.h; sourceTree = "<group>"; };
 		DA7C2429178469B8006171E4 /* force_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = force_cpp.cpp; sourceTree = "<group>"; };
 		DA7C242A178469B8006171E4 /* force_cpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = force_cpp.h; sourceTree = "<group>"; };
+		DA8571F91890707900BA5E7D /* MAPSDK-IOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "MAPSDK-IOS.framework"; sourceTree = "<group>"; };
+		DA8571FB189073C900BA5E7D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		DA8571FD1890742600BA5E7D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DA8571FF1890743300BA5E7D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		DA8572011890744200BA5E7D /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		DA8572031890744D00BA5E7D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DA857205189074CC00BA5E7D /* map.lic */ = {isa = PBXFileReference; lastKnownFileType = file; path = map.lic; sourceTree = "<group>"; };
 		DA866F0E179453060064A94B /* AudioBook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AudioBook.png; sourceTree = "<group>"; };
 		DA866F10179453090064A94B /* AudioBook_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AudioBook_retina.png; sourceTree = "<group>"; };
 		DA866F121794539F0064A94B /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
@@ -99,6 +112,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA8572041890744D00BA5E7D /* CoreLocation.framework in Frameworks */,
+				DA8572021890744200BA5E7D /* AdSupport.framework in Frameworks */,
+				DA8572001890743300BA5E7D /* MessageUI.framework in Frameworks */,
+				DA8571FC189073C900BA5E7D /* Security.framework in Frameworks */,
+				DA8571FA1890707900BA5E7D /* MAPSDK-IOS.framework in Frameworks */,
 				DA866F16179454770064A94B /* libz.dylib in Frameworks */,
 				DABBAC881785A120005E3102 /* AVFoundation.framework in Frameworks */,
 				DA283EBC1781E72800AAF84E /* libstdc++.dylib in Frameworks */,
@@ -126,10 +144,10 @@
 				DA866F0E179453060064A94B /* AudioBook.png */,
 				DABBACA11785AC1B005E3102 /* Flac-Headers */,
 				DABBAC9F1785AC0F005E3102 /* libFLACiOS.a */,
-				DABBAC871785A120005E3102 /* AVFoundation.framework */,
 				DA283EBB1781E72800AAF84E /* libstdc++.dylib */,
 				DA283EA11781DC7200AAF84E /* libBabTTS.a */,
 				DA283EA21781DC7200AAF84E /* libMobilityStatic.a */,
+				DABBAC871785A120005E3102 /* AVFoundation.framework */,
 				DA283E7B1781D8B100AAF84E /* AudioToolbox.framework */,
 				DA283E5B1781CC2A00AAF84E /* SesliGazete */,
 				DA283E541781CC2A00AAF84E /* Frameworks */,
@@ -148,6 +166,12 @@
 		DA283E541781CC2A00AAF84E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DA8572031890744D00BA5E7D /* CoreLocation.framework */,
+				DA8572011890744200BA5E7D /* AdSupport.framework */,
+				DA8571FF1890743300BA5E7D /* MessageUI.framework */,
+				DA8571FD1890742600BA5E7D /* MapKit.framework */,
+				DA8571FB189073C900BA5E7D /* Security.framework */,
+				DA8571F91890707900BA5E7D /* MAPSDK-IOS.framework */,
 				DA283E551781CC2A00AAF84E /* UIKit.framework */,
 				DA283E571781CC2A00AAF84E /* Foundation.framework */,
 				DA283E591781CC2A00AAF84E /* CoreGraphics.framework */,
@@ -177,6 +201,7 @@
 		DA283E5C1781CC2A00AAF84E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DA857205189074CC00BA5E7D /* map.lic */,
 				DA283E5D1781CC2A00AAF84E /* SesliGazete-Info.plist */,
 				DA283E5E1781CC2A00AAF84E /* InfoPlist.strings */,
 				DA283E611781CC2A00AAF84E /* main.m */,
@@ -290,6 +315,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "MeeApps Inc";
+				TargetAttributes = {
+					DA283E511781CC2A00AAF84E = {
+						DevelopmentTeam = EXN8G4Q982;
+					};
+				};
 			};
 			buildConfigurationList = DA283E4D1781CC2A00AAF84E /* Build configuration list for PBXProject "SesliGazete" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -316,6 +346,7 @@
 				DA283E601781CC2A00AAF84E /* InfoPlist.strings in Resources */,
 				DA283E681781CC2A00AAF84E /* Default.png in Resources */,
 				DA283E6A1781CC2A00AAF84E /* Default@2x.png in Resources */,
+				DA857206189074CC00BA5E7D /* map.lic in Resources */,
 				DAAA22AF182A2E8D00C8E49C /* phonetics.json in Resources */,
 				DA283E6C1781CC2A00AAF84E /* Default-568h@2x.png in Resources */,
 				DA283E721781CC2A00AAF84E /* ViewController_iPhone.xib in Resources */,
@@ -440,7 +471,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: MeeApps Inc (5XANHQCX6U)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/Netas3/Desktop/Kisisel/SesliGazete,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SesliGazete/SesliGazete-Prefix.pch";
@@ -450,8 +482,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8499303C-B68B-4E1D-86B3-7F864CA83075";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8499303C-B68B-4E1D-86B3-7F864CA83075";
+				PROVISIONING_PROFILE = "A707663E-B82F-402A-8C37-FAFED8DBFDC3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A707663E-B82F-402A-8C37-FAFED8DBFDC3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -463,7 +495,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: MeeApps Inc (5XANHQCX6U)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					/Users/Netas3/Desktop/Kisisel/SesliGazete,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SesliGazete/SesliGazete-Prefix.pch";
@@ -473,8 +506,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8499303C-B68B-4E1D-86B3-7F864CA83075";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8499303C-B68B-4E1D-86B3-7F864CA83075";
+				PROVISIONING_PROFILE = "A707663E-B82F-402A-8C37-FAFED8DBFDC3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A707663E-B82F-402A-8C37-FAFED8DBFDC3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
