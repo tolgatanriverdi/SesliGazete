@@ -85,8 +85,6 @@
     [pdfViewer loadRequest:pdfRequest];
     
     self.pageToRead = GUNCEL_SES_FILE;
-    //NSString *phoneticJSONPath = [[NSBundle mainBundle] pathForResource:@"phonetics" ofType:@"json"];
-    //NSURL *phoneticUrl = [NSURL URLWithString:phoneticJSONPath];
     NSURL *phoneticUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",WEB_PAGE,PHONETICS_FILE]];
     NSString *phoneticsJSON = [NSString stringWithContentsOfURL:phoneticUrl encoding:NSUTF8StringEncoding error:nil];
     
@@ -164,7 +162,7 @@
     }
     //self.listenButton.enabled = NO;
     [recorder record];
-    self.recordTimer = [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(stopRecording) userInfo:nil repeats:NO];
+    self.recordTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(stopRecording) userInfo:nil repeats:NO];
     
     readMode = NO;
     self.readButton.title = @"Okut";
@@ -198,7 +196,10 @@
     char** flac_files = (char**) malloc(sizeof(char*) * 1024);
     int status = convertWavToFlac([pathToSave UTF8String], [outputPath UTF8String], interval_seconds, flac_files);
     NSLog(@"Status Of Conversion : %d",status);
-    outputPath = [outputPath stringByAppendingString:@".flac"];
+    if ([outputPath rangeOfString:@".flac"].location == NSNotFound) {
+        outputPath = [outputPath stringByAppendingString:@".flac"];
+    }
+
     
     if ([[NSFileManager defaultManager] fileExistsAtPath:outputPath]) {
         NSLog(@"Dosya Yazildi: %@",outputPath);
@@ -222,7 +223,7 @@
     NSMutableDictionary *settings = [NSMutableDictionary dictionary];
     
     [settings setValue: [NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
-    [settings setValue: [NSNumber numberWithFloat:44000.0] forKey:AVSampleRateKey];
+    [settings setValue: [NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
     [settings setValue: [NSNumber numberWithInt: 1] forKey:AVNumberOfChannelsKey];
     [settings setValue:  [NSNumber numberWithInt: AVAudioQualityMax] forKey:AVEncoderAudioQualityKey];
     
@@ -288,18 +289,26 @@
         [self hideHUD];
         
         NSLog(@"Google Speech Response Geldi");
+        NSString *dataStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"Incoming Data: %@",dataStr);
+        
+        
         NSDictionary * result = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSLog(@"Result of Google Speech : %@",result);
         if (result) {
-            int status = [[result objectForKey:@"status"] intValue];
+            int status = [[result objectForKey:@"result_index"] intValue];
             if (status == 0) {
-                NSArray *hypotesis = [result objectForKey:@"hypotheses"];
-                if ([hypotesis count]) {
-                    NSDictionary *utteranceDict = [hypotesis objectAtIndex:0];
-                    NSString *resultText = [utteranceDict objectForKey:@"utterance"];
+                NSArray *resultArr = [result objectForKey:@"result"];
+                if ([resultArr count]) {
+                    NSDictionary *resultDict = [resultArr objectAtIndex:0];
+                    NSArray *alternativeArr = [resultDict objectForKey:@"alternative"];
+                    NSDictionary *transcriptDict = [alternativeArr objectAtIndex:0];
+                    NSString *resultText = [transcriptDict objectForKey:@"transcript"];
                     NSLog(@"RESULT TEXT : %@",resultText);
                     [self checkSpeechResult:resultText];
                 }
+            } else {
+                [self speechApiFailed];
             }
 
         }
@@ -309,11 +318,17 @@
 
 -(void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+    [self speechApiFailed];
+
+}
+
+
+-(void) speechApiFailed
+{
     self.listenButton.enabled = YES;
     if (networkStatus == 1) {
-      [self hideHUD];
+        [self hideHUD];
     }
-
 }
 
 
@@ -321,16 +336,22 @@
 {
     networkStatus = 1;
     NSLog(@"Sending Record To Google Speech Api");
+    /*
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
                                     initWithURL:[NSURL
                                                  URLWithString:@"https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&lang=tr-TR"]];
+     */
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+                                    initWithURL:[NSURL
+                                                 URLWithString:@"https://www.google.com/speech-api/v2/recognize?output=json&lang=tr-TR&key=AIzaSyBVnaTwNECFHwwxmNQF2fhhM0oYj0N5beM&client=chromium"]];
     
     
     NSData *myData = [NSData dataWithContentsOfFile:outputPath];
     
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:myData];
-    [request addValue:@"audio/x-flac; rate=44000" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"audio/x-flac; rate=44100" forHTTPHeaderField:@"Content-Type"];
     [request setTimeoutInterval:15];
     
     

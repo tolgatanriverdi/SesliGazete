@@ -290,6 +290,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "MeeApps Inc";
+				TargetAttributes = {
+					DA283E511781CC2A00AAF84E = {
+						DevelopmentTeam = EXN8G4Q982;
+					};
+				};
 			};
 			buildConfigurationList = DA283E4D1781CC2A00AAF84E /* Build configuration list for PBXProject "SesliGazete" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -436,8 +441,8 @@
 		DA283E791781CC2A00AAF84E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: MeeApps Inc (5XANHQCX6U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: MeeApps Inc (5XANHQCX6U)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -450,8 +455,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8499303C-B68B-4E1D-86B3-7F864CA83075";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8499303C-B68B-4E1D-86B3-7F864CA83075";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -459,8 +464,8 @@
 		DA283E7A1781CC2A00AAF84E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: MeeApps Inc (5XANHQCX6U)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: MeeApps Inc (5XANHQCX6U)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -473,8 +478,8 @@
 					"\"$(SRCROOT)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8499303C-B68B-4E1D-86B3-7F864CA83075";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8499303C-B68B-4E1D-86B3-7F864CA83075";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
